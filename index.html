@@ -3,49 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nanda Tanaka | Oficial</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+    <title>Nanda Tanaka | VIP</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800;900&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            --cor-fundo: #050505;
-            --cor-primaria: #fd267a; /* Rosa vibrante estilo Tinder/Hot */
-            --cor-secundaria: #ff6036; /* Laranja fogo */
-            --cor-texto: #ffffff;
-            --cor-microcopy: #94a3b8;
-            --glow: 0 0 25px rgba(253, 38, 122, 0.7);
+            --cor-primaria: #fd267a; 
+            --cor-secundaria: #ff6036; 
+            --texto-principal: #ffffff;
+            --texto-secundario: #cbd5e1;
+            --glow: 0 0 25px rgba(253, 38, 122, 0.6);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            background-color: var(--cor-fundo);
+            /* DEGRADÊ ESCURO + IMAGEM DE FUNDO NA PRAIA */
             background-image: 
-                radial-gradient(circle at 50% -20%, #25102a 0%, transparent 60%),
-                radial-gradient(circle at 0% 100%, #101010 0%, transparent 40%);
-            color: var(--cor-texto);
+                linear-gradient(to bottom, rgba(5, 5, 5, 0.6) 0%, rgba(5, 5, 5, 0.95) 100%),
+                url('https://i.postimg.cc/T1YTcctt/fyirje1s.jpg'); 
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            
+            color: var(--texto-principal);
             font-family: 'Montserrat', sans-serif;
             display: flex;
             flex-direction: column;
             align-items: center;
+            justify-content: center;
             min-height: 100vh;
-            padding: 2rem 1.5rem;
+            padding: 2rem 1.2rem;
         }
 
-        .container {
+        .glass-container {
             width: 100%;
-            max-width: 420px;
+            max-width: 400px;
+            background: rgba(20, 20, 20, 0.45);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 2.5rem 1.5rem;
             text-align: center;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
             display: flex;
             flex-direction: column;
             gap: 1.2rem;
         }
 
-        /* Foto de perfil com brilho */
         .profile-wrapper {
             position: relative;
-            width: 130px;
-            height: 130px;
+            width: 120px;
+            height: 120px;
             margin: 0 auto 0.5rem;
         }
 
@@ -54,7 +65,7 @@
             height: 100%;
             border-radius: 50%;
             object-fit: cover;
-            border: 4px solid var(--cor-primaria);
+            border: 3px solid var(--cor-primaria);
             box-shadow: var(--glow);
             position: relative;
             z-index: 2;
@@ -63,45 +74,32 @@
         .verified-badge {
             position: absolute;
             bottom: 5px;
-            right: 5px;
+            right: 2px;
             background: #1d9bf0;
             border-radius: 50%;
-            width: 25px;
-            height: 25px;
+            width: 26px;
+            height: 26px;
             display: flex;
             align-items: center;
             justify-content: center;
             z-index: 3;
-            border: 2px solid var(--cor-fundo);
+            border: 2px solid #1a1a1a;
         }
 
-        /* Headline Emocional e Curiosidade */
-        h1 {
-            font-weight: 900;
-            font-size: 1.6rem;
-            letter-spacing: -1.5px;
-            line-height: 1.1;
-            background: linear-gradient(to bottom, #fff, #bbb);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .subheadline {
-            font-size: 0.95rem;
-            color: var(--cor-microcopy);
-            line-height: 1.3;
-        }
-
-        /* Status Online */
-        .status-online {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            font-size: 0.8rem;
+        .status-badge {
+            background: rgba(74, 222, 128, 0.15);
             color: #4ade80;
-            font-weight: 700;
+            border: 1px solid rgba(74, 222, 128, 0.3);
+            padding: 6px 14px;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 800;
             text-transform: uppercase;
             letter-spacing: 1px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin: 0 auto;
         }
 
         .dot {
@@ -109,94 +107,118 @@
             height: 8px;
             background-color: #4ade80;
             border-radius: 50%;
-            animation: blink 1.5s infinite;
+            animation: pulse-dot 1.5s infinite;
         }
 
-        @keyframes blink {
-            0% { opacity: 1; }
-            50% { opacity: 0.3; }
-            100% { opacity: 1; }
+        @keyframes pulse-dot {
+            0% { box-shadow: 0 0 0 0 rgba(74, 222, 128, 0.7); }
+            70% { box-shadow: 0 0 0 6px rgba(74, 222, 128, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(74, 222, 128, 0); }
         }
 
-        /* O Botão de Desejo / Dopamina */
-        .btn-vip {
+        h1 {
+            font-weight: 900;
+            font-size: 1.5rem;
+            line-height: 1.2;
+            letter-spacing: -0.5px;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.8);
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 15px;
-            background: linear-gradient(45deg, var(--cor-primaria), var(--cor-secundaria));
-            padding: 1.3rem;
-            border-radius: 18px;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        /* Cor do ícone do título */
+        .icon-headline {
+            color: var(--cor-primaria);
+            width: 28px;
+            height: 28px;
+        }
+
+        p.subheadline {
+            font-size: 0.95rem;
+            color: var(--texto-secundario);
+            line-height: 1.4;
+            font-weight: 400;
+            margin-bottom: 0.5rem;
+        }
+
+        .btn-cta {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            background: linear-gradient(90deg, var(--cor-primaria), var(--cor-secundaria), var(--cor-primaria));
+            background-size: 200% auto;
+            padding: 1.2rem;
+            border-radius: 14px;
             text-decoration: none;
             color: white;
             font-weight: 900;
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             text-transform: uppercase;
-            box-shadow: 0 10px 30px rgba(253, 38, 122, 0.5);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: 0 8px 25px rgba(253, 38, 122, 0.5);
+            transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
-            animation: pulse 2.5s infinite;
+            animation: gradient-shift 3s infinite linear, pulse-btn 2.5s infinite;
         }
 
-        .btn-vip:active { transform: scale(0.95); }
+        .btn-cta:active { transform: scale(0.95); }
 
-        /* Brilho que passa pelo botão */
-        .btn-vip::after {
+        .btn-cta::after {
             content: "";
             position: absolute;
-            top: -50%;
-            left: -100%;
-            width: 200%;
-            height: 200%;
-            background: rgba(255,255,255,0.25);
-            transform: rotate(45deg);
-            animation: shine 3.5s infinite;
+            top: 0; left: -100%;
+            width: 50%; height: 100%;
+            background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.4) 50%, rgba(255,255,255,0) 100%);
+            transform: skewX(-25deg);
+            animation: shine 3s infinite;
         }
 
-        @keyframes shine {
-            0% { left: -100%; }
-            20% { left: 120%; }
-            100% { left: 120%; }
-        }
-
-        @keyframes pulse {
-            0% { transform: scale(1); box-shadow: 0 10px 30px rgba(253, 38, 122, 0.5); }
-            50% { transform: scale(1.03); box-shadow: 0 12px 40px rgba(253, 38, 122, 0.7); }
-            100% { transform: scale(1); box-shadow: 0 10px 30px rgba(253, 38, 122, 0.5); }
-        }
-
-        .chama-icon {
-            font-size: 1.6rem;
+        /* Animação do ícone de fogo */
+        .icon-fire {
+            width: 24px;
+            height: 24px;
             animation: burn 1.5s infinite alternate;
         }
 
         @keyframes burn {
             0% { transform: scale(1); }
-            100% { transform: scale(1.1) rotate(-5deg); }
+            100% { transform: scale(1.15) rotate(-5deg); }
         }
 
-        .micro-copy {
-            margin-top: 1rem;
-            font-size: 0.85rem;
-            color: var(--cor-microcopy);
-            font-style: italic;
+        @keyframes gradient-shift {
+            0% { background-position: 0% center; }
+            100% { background-position: 200% center; }
         }
 
-        /* Rodapé Seguro */
+        @keyframes shine {
+            0% { left: -100%; }
+            20% { left: 200%; }
+            100% { left: 200%; }
+        }
+
+        @keyframes pulse-btn {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+            100% { transform: scale(1); }
+        }
+
         footer {
-            margin-top: auto;
-            padding-top: 3rem;
+            margin-top: 1.5rem;
             font-size: 0.7rem;
-            color: #444;
+            color: rgba(255,255,255,0.4);
             text-align: center;
-            line-height: 1.4;
+            line-height: 1.5;
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
+    <div class="glass-container">
+        
         <div class="profile-wrapper">
             <img src="https://i.postimg.cc/hjN0LC4n/Captura-de-tela-2026-05-16-012956-removebg-preview.png" alt="Nanda Tanaka" class="profile-pic">
             <div class="verified-badge">
@@ -204,41 +226,45 @@
             </div>
         </div>
 
-        <div class="status-online">
-            <span class="dot"></span>
-            Disponível no privado
+        <div class="status-badge">
+            <span class="dot"></span> Online no Vip
         </div>
 
-        <h1>Finalmente você me achou... O que o TikTok não me deixa mostrar, você vê aqui 😈</h1>
+        <h1>
+            Finalmente você me achou... 
+            <svg class="icon-headline" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/>
+                <circle cx="12" cy="12" r="3"/>
+            </svg>
+        </h1>
         
-        <p class="subheadline">Meu conteúdo secreto sem censura. Clique abaixo e vamos para o Telegram aproveitar do jeitinho certo... 😉</p>
+        <p class="subheadline">O que o TikTok não me deixa mostrar, eu libero tudo aqui. Vamos pro meu Telegram aproveitar do jeitinho certo...</p>
 
-        <div style="margin-top: 15px;">
-            <a href="https://t.me/tanakaavipbot?start=/start" class="btn-vip" id="cta-link">
-                <span class="chama-icon">🔥</span>
+        <div style="margin-top: 10px;">
+            <a href="https://t.me/tanakaavipbot?start=/start" class="btn-cta" id="telegram-link">
+                <svg class="icon-fire" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/>
+                </svg>
                 VER CONTEÚDO SEM CENSURA
             </a>
         </div>
 
-        <p class="micro-copy">Abra sua conversa exclusiva e segura no Telegram.</p>
     </div>
 
     <footer>
-        © 2024 Nanda Tanaka Oficial. Todos os direitos reservados.<br>
-        Acesso permitido apenas para maiores de 18 anos.
+        © 2024 Nanda Tanaka. Todos os direitos reservados.<br>
+        Acesso estritamente para maiores de 18 anos.
     </footer>
 
     <script>
-        // SCRIPT PARA NÃO PERDER O TRACKING (UTMs)
-        // Pega os parâmetros da URL (sck, src, utm_source, etc) e adiciona ao link do Telegram
         document.addEventListener('DOMContentLoaded', function() {
             const urlParams = window.location.search;
-            const ctaBtn = document.getElementById('cta-link');
+            const btnLink = document.getElementById('telegram-link');
 
-            if (urlParams && ctaBtn) {
-                const originalHref = ctaBtn.getAttribute('href');
-                const separator = originalHref.includes('?') ? '&' : '?';
-                ctaBtn.setAttribute('href', originalHref + separator + urlParams.substring(1));
+            if (urlParams && btnLink) {
+                const href = btnLink.getAttribute('href');
+                const separator = href.includes('?') ? '&' : '?';
+                btnLink.setAttribute('href', href + separator + urlParams.substring(1));
             }
         });
     </script>
