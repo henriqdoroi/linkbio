@@ -18,7 +18,6 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            /* DEGRADÊ ESCURO + IMAGEM DE FUNDO NA PRAIA */
             background-image: 
                 linear-gradient(to bottom, rgba(5, 5, 5, 0.6) 0%, rgba(5, 5, 5, 0.95) 100%),
                 url('https://i.postimg.cc/T1YTcctt/fyirje1s.jpg'); 
@@ -129,7 +128,6 @@
             flex-wrap: wrap;
         }
 
-        /* Cor do ícone do título */
         .icon-headline {
             color: var(--cor-primaria);
             width: 28px;
@@ -177,7 +175,6 @@
             animation: shine 3s infinite;
         }
 
-        /* Animação do ícone de fogo */
         .icon-fire {
             width: 24px;
             height: 24px;
@@ -258,13 +255,28 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const urlParams = window.location.search;
             const btnLink = document.getElementById('telegram-link');
+            
+            // UTMs padrão que serão injetadas sempre (mesmo se o link da bio estiver limpo)
+            const defaultUTMs = "utm_source=tiktok&utm_campaign=bio&utm_medium=organic&utm_content=profile&shk=mucqj9ww";
 
-            if (urlParams && btnLink) {
-                const href = btnLink.getAttribute('href');
-                const separator = href.includes('?') ? '&' : '?';
-                btnLink.setAttribute('href', href + separator + urlParams.substring(1));
+            if (btnLink) {
+                const originalHref = btnLink.getAttribute('href');
+                
+                // Pega os parâmetros da URL caso a pessoa clique em um anúncio com UTMs extras
+                const urlParams = window.location.search.substring(1); 
+                
+                // Junta as UTMs da URL (se tiver) com as suas UTMs padrão
+                let finalParams = defaultUTMs;
+                if (urlParams) {
+                    finalParams += "&" + urlParams;
+                }
+
+                // O link do Telegram já tem o ?start=/start, então usamos o & para adicionar as UTMs
+                const separator = originalHref.includes('?') ? '&' : '?';
+                
+                // Atualiza o link do botão
+                btnLink.setAttribute('href', originalHref + separator + finalParams);
             }
         });
     </script>
