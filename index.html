@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acesso VIP</title>
+
+    <style>
+        :root {
+            /* Paleta de alta conversão (Fundo escuro + Botão chamativo) */
+            --bg-color: #0f172a; 
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --primary-btn: #10b981; 
+            --primary-btn-hover: #059669;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', -apple-system, sans-serif; }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            padding: 3rem 1rem;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 480px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .profile-pic {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto;
+            border: 3px solid var(--primary-btn);
+            box-shadow: 0 0 20px rgba(16, 185, 129, 0.3);
+        }
+
+        .headline { font-size: 1.5rem; font-weight: 700; line-height: 1.2; }
+        .subheadline { font-size: 1rem; color: var(--text-muted); margin-bottom: 1rem; }
+
+        .links-container { display: flex; flex-direction: column; gap: 1rem; }
+
+        .btn-telegram {
+            background-color: var(--primary-btn);
+            color: #ffffff;
+            text-decoration: none;
+            padding: 1.2rem 1rem;
+            border-radius: 8px;
+            font-weight: 800;
+            font-size: 1.125rem;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            animation: pulse 2s infinite;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn-telegram:hover {
+            background-color: var(--primary-btn-hover);
+            transform: translateY(-2px);
+        }
+
+        /* Animação para chamar a atenção para o clique */
+        @keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+            70% { transform: scale(1.03); box-shadow: 0 0 0 15px rgba(16, 185, 129, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+        }
+
+        .footer-text { margin-top: 2rem; font-size: 0.75rem; color: var(--text-muted); }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="https://via.placeholder.com/120" alt="Perfil" class="profile-pic">
+
+        <div>
+            <h1 class="headline">Acesso Exclusivo Liberado</h1>
+            <p class="subheadline">Toque no botão abaixo para acessar o Bot e receber as instruções imediatamente.</p>
+        </div>
+
+        <div class="links-container">
+            <a href="https://t.me/SEU_BOT_AQUI" class="btn-telegram" id="telegram-link">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M20.665 3.33496L2.33501 10.407L8.60101 13.541L18.064 5.92296L10.741 14.61L17.472 19.656L20.665 3.33496Z" fill="white"/>
+                </svg>
+                ENTRAR NO BOT AGORA
+            </a>
+        </div>
+
+        <p class="footer-text">Acesso liberado temporariamente.</p>
+    </div>
+
+    <script>
+        // SCRIPT DE REPASSE DE PARÂMETROS
+        // Pega as UTMs (src, utm_source, sck, etc) da página e joga no link do Telegram
+        // Isso garante que a ferramenta de tracking marque a venda/conversão corretamente
+        document.addEventListener('DOMContentLoaded', function() {
+            const urlParams = window.location.search;
+            const telegramBtn = document.getElementById('telegram-link');
+
+            if (urlParams && telegramBtn) {
+                const originalHref = telegramBtn.getAttribute('href');
+                const separator = originalHref.includes('?') ? '&' : '?';
+                
+                // Monta o novo link com os parâmetros da campanha
+                telegramBtn.setAttribute('href', originalHref + separator + urlParams.substring(1));
+            }
+        });
+    </script>
+</body>
+</html>
