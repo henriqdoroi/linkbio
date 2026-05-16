@@ -12,7 +12,8 @@
             --cor-primaria: #fd267a; /* Rosa vibrante estilo Tinder/Hot */
             --cor-secundaria: #ff6036; /* Laranja fogo */
             --cor-texto: #ffffff;
-            --glow: 0 0 20px rgba(253, 38, 122, 0.6);
+            --cor-microcopy: #94a3b8;
+            --glow: 0 0 25px rgba(253, 38, 122, 0.7);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -20,7 +21,7 @@
         body {
             background-color: var(--cor-fundo);
             background-image: 
-                radial-gradient(circle at 50% -20%, #25102a 0%, transparent 50%),
+                radial-gradient(circle at 50% -20%, #25102a 0%, transparent 60%),
                 radial-gradient(circle at 0% 100%, #101010 0%, transparent 40%);
             color: var(--cor-texto);
             font-family: 'Montserrat', sans-serif;
@@ -33,8 +34,11 @@
 
         .container {
             width: 100%;
-            max-width: 400px;
+            max-width: 420px;
             text-align: center;
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
         }
 
         /* Foto de perfil com brilho */
@@ -42,7 +46,7 @@
             position: relative;
             width: 130px;
             height: 130px;
-            margin: 0 auto 1.5rem;
+            margin: 0 auto 0.5rem;
         }
 
         .profile-pic {
@@ -50,7 +54,7 @@
             height: 100%;
             border-radius: 50%;
             object-fit: cover;
-            border: 3px solid var(--cor-primaria);
+            border: 4px solid var(--cor-primaria);
             box-shadow: var(--glow);
             position: relative;
             z-index: 2;
@@ -71,25 +75,33 @@
             border: 2px solid var(--cor-fundo);
         }
 
-        /* Headline Emocional */
+        /* Headline Emocional e Curiosidade */
         h1 {
             font-weight: 900;
             font-size: 1.6rem;
-            letter-spacing: -1px;
-            margin-bottom: 0.5rem;
-            background: linear-gradient(to right, #fff, #ccc);
+            letter-spacing: -1.5px;
+            line-height: 1.1;
+            background: linear-gradient(to bottom, #fff, #bbb);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
+        .subheadline {
+            font-size: 0.95rem;
+            color: var(--cor-microcopy);
+            line-height: 1.3;
+        }
+
+        /* Status Online */
         .status-online {
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             color: #4ade80;
-            margin-bottom: 2rem;
-            font-weight: 600;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .dot {
@@ -106,7 +118,7 @@
             100% { opacity: 1; }
         }
 
-        /* O Botão de Desejo */
+        /* O Botão de Desejo / Dopamina */
         .btn-vip {
             display: flex;
             align-items: center;
@@ -114,17 +126,17 @@
             gap: 15px;
             background: linear-gradient(45deg, var(--cor-primaria), var(--cor-secundaria));
             padding: 1.3rem;
-            border-radius: 15px;
+            border-radius: 18px;
             text-decoration: none;
             color: white;
             font-weight: 900;
             font-size: 1.1rem;
             text-transform: uppercase;
-            box-shadow: 0 10px 30px rgba(253, 38, 122, 0.4);
-            transition: transform 0.2s ease;
+            box-shadow: 0 10px 30px rgba(253, 38, 122, 0.5);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
             position: relative;
             overflow: hidden;
-            animation: pulse 2s infinite;
+            animation: pulse 2.5s infinite;
         }
 
         .btn-vip:active { transform: scale(0.95); }
@@ -134,40 +146,51 @@
             content: "";
             position: absolute;
             top: -50%;
-            left: -50%;
+            left: -100%;
             width: 200%;
             height: 200%;
-            background: rgba(255,255,255,0.2);
+            background: rgba(255,255,255,0.25);
             transform: rotate(45deg);
-            animation: shine 3s infinite;
+            animation: shine 3.5s infinite;
         }
 
         @keyframes shine {
             0% { left: -100%; }
-            20% { left: 100%; }
-            100% { left: 100%; }
+            20% { left: 120%; }
+            100% { left: 120%; }
         }
 
         @keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 10px 30px rgba(253, 38, 122, 0.5); }
+            50% { transform: scale(1.03); box-shadow: 0 12px 40px rgba(253, 38, 122, 0.7); }
+            100% { transform: scale(1); box-shadow: 0 10px 30px rgba(253, 38, 122, 0.5); }
+        }
+
+        .chama-icon {
+            font-size: 1.6rem;
+            animation: burn 1.5s infinite alternate;
+        }
+
+        @keyframes burn {
             0% { transform: scale(1); }
-            50% { transform: scale(1.02); }
-            100% { transform: scale(1); }
+            100% { transform: scale(1.1) rotate(-5deg); }
         }
 
         .micro-copy {
-            margin-top: 1.2rem;
+            margin-top: 1rem;
             font-size: 0.85rem;
-            color: #888;
+            color: var(--cor-microcopy);
             font-style: italic;
         }
 
-        /* Footer Seguro */
+        /* Rodapé Seguro */
         footer {
             margin-top: auto;
             padding-top: 3rem;
             font-size: 0.7rem;
             color: #444;
             text-align: center;
+            line-height: 1.4;
         }
     </style>
 </head>
@@ -175,27 +198,29 @@
 
     <div class="container">
         <div class="profile-wrapper">
-            <img src="LINK_DA_FOTO_AQUI" alt="Nanda Tanaka" class="profile-pic">
+            <img src="https://i.postimg.cc/hjN0LC4n/Captura-de-tela-2026-05-16-012956-removebg-preview.png" alt="Nanda Tanaka" class="profile-pic">
             <div class="verified-badge">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="white"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>
             </div>
         </div>
 
-        <h1>Finalmente você chegou... 😈</h1>
-        
         <div class="status-online">
             <span class="dot"></span>
-            Disponível agora no privado
+            Disponível no privado
         </div>
 
-        <div style="margin-top: 10px;">
-            <a href="https://t.me/SEU_BOT_AQUI" class="btn-vip" id="cta-link">
-                <span style="font-size: 1.5rem;">🔞</span>
-                VER MEU CONTEÚDO SECRETO
+        <h1>Finalmente você me achou... O que o TikTok não me deixa mostrar, você vê aqui 😈</h1>
+        
+        <p class="subheadline">Meu conteúdo secreto sem censura. Clique abaixo e vamos para o Telegram aproveitar do jeitinho certo... 😉</p>
+
+        <div style="margin-top: 15px;">
+            <a href="https://t.me/tanakaavipbot?start=/start" class="btn-vip" id="cta-link">
+                <span class="chama-icon">🔥</span>
+                VER CONTEÚDO SEM CENSURA
             </a>
         </div>
 
-        <p class="micro-copy">Clique acima para abrir nossa conversa no Telegram.</p>
+        <p class="micro-copy">Abra sua conversa exclusiva e segura no Telegram.</p>
     </div>
 
     <footer>
@@ -205,6 +230,7 @@
 
     <script>
         // SCRIPT PARA NÃO PERDER O TRACKING (UTMs)
+        // Pega os parâmetros da URL (sck, src, utm_source, etc) e adiciona ao link do Telegram
         document.addEventListener('DOMContentLoaded', function() {
             const urlParams = window.location.search;
             const ctaBtn = document.getElementById('cta-link');
